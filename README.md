@@ -18,3 +18,5 @@
 Submission:
 # Github repo link
 # The .readme file in github must contain screenshots of the whole app
+
+![img.png](img.png)
