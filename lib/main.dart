@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -29,13 +30,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // The images must be Network Images. You can choose any network image as you like.
-  // There must be at least 6 images in the Wrap Widget.
-  // Each photo should be represented by an ElevatedButton
-  // or OutlineButton with an Image and caption below it.
+
+  /// wrap container component
   myWrapContainer(context, String title, String imgUrl) {
+    ///9. Each photo should be represented by an ElevatedButton or OutlineButton with an Image and caption below it.
     return ElevatedButton(
       onPressed: () {
+        ///10. While clicking on each image there should be a Snackbar Showing message “Clicked on photo!”
         mySnackBar(context, "Clicked on photo!");
       },
       style: ButtonStyle(
@@ -67,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  /// List of title, subtitle & images
   List myList = [
     {
       'title': "Sample Photo 1",
@@ -118,8 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    ///1. Create a Flutter app with a Scaffold as the root widget.
     return Scaffold(
-      /// Implement an AppBar at the top with a title "Photo Gallery".
+      ///2. Implement an AppBar at the top with a title "Photo Gallery".
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
@@ -131,17 +134,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      // Inside the body of the Scaffold,
-      // create a SingleChildScrollView to enable scrolling.
+      ///3. Inside the body of the Scaffold, create a SingleChildScrollView to enable scrolling.
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
-        // Within the SingleChildScrollView, create a Column widget.
+        ///4. Within the SingleChildScrollView, create a Column widget.
         child: Column(
-          // Inside the Column widget, add a Container to
-          // display a welcome message such as "Welcome to My Photo Gallery!
           children: [
             Padding(
               padding: const EdgeInsets.all(14.0),
+              ///5. Inside the Column widget, add a Container to display a welcome message such as "Welcome to My Photo Gallery!
               child: Container(
                 child: Text(
                   "Welcome to My Photo Gallery!",
@@ -153,12 +154,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-            // Below the welcome message,
-            // create a TextField for users to search for specific photos.
-            // Use appropriate styling and placeholder text.
-            // No search functionality needed just design the TextField.
             Padding(
               padding: const EdgeInsets.all(18.0),
+              ///6. Create a TextField for users to search for specific photos. Use appropriate styling and placeholder text. No search functionality needed just design the TextField.
               child: TextField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 16.0),
@@ -169,38 +167,38 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-            // Implement a Wrap widget to display a grid of photos.
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0, right: 0, left: 0),
-              child: Wrap(
-                spacing: 30,
-                runSpacing: 10,
-                children: [
-                  myWrapContainer(context, "Photo 1",
-                      "https://images.pexels.com/photos/3878114/pexels-photo-3878114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                  myWrapContainer(context, "Photo 2",
-                      "https://images.pexels.com/photos/4048392/pexels-photo-4048392.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
-                  myWrapContainer(context, "Photo 3",
-                      "https://images.pexels.com/photos/5366872/pexels-photo-5366872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                  myWrapContainer(context, "Photo 4",
-                      "https://images.pexels.com/photos/6129593/pexels-photo-6129593.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                  myWrapContainer(context, "Photo 5",
-                      "https://images.pexels.com/photos/6923716/pexels-photo-6923716.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                  myWrapContainer(context, "Photo 6",
-                      "https://images.pexels.com/photos/7445839/pexels-photo-7445839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                ],
-              ),
+            Wrap(
+              alignment: WrapAlignment.spaceAround,
+              spacing: 30,
+              runSpacing: 10,
+              children: [
+                ///8. The images must be Network Images. You can choose any network image as you like.
+                // There must be at least 6 images in the Wrap Widget.
+                myWrapContainer(context, "Photo 1",
+                    "https://images.pexels.com/photos/3878114/pexels-photo-3878114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                myWrapContainer(context, "Photo 2",
+                    "https://images.pexels.com/photos/4048392/pexels-photo-4048392.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
+                myWrapContainer(context, "Photo 3",
+                    "https://images.pexels.com/photos/5366872/pexels-photo-5366872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                myWrapContainer(context, "Photo 4",
+                    "https://images.pexels.com/photos/6129593/pexels-photo-6129593.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                myWrapContainer(context, "Photo 5",
+                    "https://images.pexels.com/photos/6923716/pexels-photo-6923716.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                myWrapContainer(context, "Photo 6",
+                    "https://images.pexels.com/photos/7445839/pexels-photo-7445839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+              ],
             ),
 
             SizedBox(
               height: 20,
             ),
 
-            /// Use a ListView to display a list of ListTile widgets below the photo grid.
+            ///11. Use a ListView to display a list of ListTile widgets below the photo grid.
             ListView.builder(
               shrinkWrap: true,
               itemCount: myList.length,
               itemBuilder: (context, index) {
+                ///12. Each ListTile should represent a photo with a title and a subtitle.
                 return ListTile(
                   leading: SizedBox(
                     height: 60,
@@ -214,8 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
 
-            // Implement a button, such as an IconButton, that when pressed,
-            // displays a SnackBar with the message "Photos Uploaded Successfully!".
+            ///13. Implement a button, such as an IconButton, that when pressed, displays a SnackBar with the message "Photos Uploaded Successfully!".
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(

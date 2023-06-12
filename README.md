@@ -20,4 +20,4 @@ Submission:
 
 # The .readme file in github must contain screenshots of the whole app
 
-![img_1.png](img_1.png)
+![img_3.png](img_3.png)
